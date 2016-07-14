@@ -1,12 +1,12 @@
-f3d8f3f3b5f5d6a214fe4100708be9b6 *DESCRIPTION
+800b7a4e29356e5e9242de2b921a69bf *DESCRIPTION
 a441ce6d4c68d76d6c70b3b54b110eda *NAMESPACE
-cfd63c91271c113a1cc02a012b202c68 *R/bioc_stats.R
+66190efd9f0d387a6a78c7454d575bbe *R/bioc_stats.R
 19dc0f45e372ced2dbbc713fd4d68ce3 *R/cran_stats.R
 ddab3369fc1e7bb2eae67e90444c1427 *README.md
 c7fd623aa5cd3cf5de3fe4b80c95b60a *build/vignette.rds
 7cdef74f9ccbdfbbd2e229867839aee2 *inst/doc/dlstats.R
 418a37b10ffcee516261bb0c2879f8ba *inst/doc/dlstats.Rmd
-10389f81105b88ccd56eb1c22a48b7cb *inst/doc/dlstats.html
+c465d785ecfd4754873d8133fd3f37b8 *inst/doc/dlstats.html
 bdfe61bd6adc09b1df0025970291e513 *man/bioc_stats.Rd
 363a0ed54f4cd94b6aafd1affa33e754 *man/cran_stats.Rd
 418a37b10ffcee516261bb0c2879f8ba *vignettes/dlstats.Rmd
