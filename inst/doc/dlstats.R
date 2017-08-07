@@ -11,10 +11,10 @@ library("dlstats")
 library("ggplot2")
 library("dlstats")
 
-x <- cran_stats(c("dlstats", "emojifont", "rvcheck"))
+x <- cran_stats(c("emojifont", "ggimage", "hexSticker", "rvcheck"))
 head(x)
 ggplot(x, aes(end, downloads, group=package, color=package)) +
-    geom_line() + geom_label(aes(label=downloads))
+    geom_line() + geom_point(aes(shape=package))
 
 ## ----fig.width=10--------------------------------------------------------
 pkgs <- c("ChIPseeker", "clusterProfiler", "DOSE", "ggtree", "GOSemSim", "ReactomePA")
@@ -23,7 +23,6 @@ head(y)
 
 ggplot(y, aes(end, Nb_of_downloads, group=package, color=package)) +
     geom_line() + geom_point(aes(shape=package))
-
 
 ## ----fig.width=10--------------------------------------------------------
 library("tidyr")
