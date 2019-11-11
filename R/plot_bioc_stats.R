@@ -1,5 +1,10 @@
-YGC_cran_pkg <- c("badger", "dlstats", "emojifont", "ggimage", "rvcheck", "scatterpie")
-YGC_bioc_pkg <- c("GOSemSim", "DOSE", "clusterProfiler", "ReactomePA", "ChIPseeker", "ggtree", "meshes", "treeio")
+YGC_cran_pkg <- c("badger", "dlstats", "emojifont", "ggimage",
+                  "ggplotify", "meme", "rvcheck", "scatterpie",
+                  "shadowtext", "tidytree")
+
+YGC_bioc_pkg <- c("ChIPseeker", "clusterProfiler", "DOSE",
+                  "enrichplot", "ggtree", "GOSemSim", "meshes",
+                  "ReactomePA", "seqcombo", "treeio")
 
 ##' plot bioconductor download stats
 ##'
@@ -24,19 +29,24 @@ YGC_bioc_pkg <- c("GOSemSim", "DOSE", "clusterProfiler", "ReactomePA", "ChIPseek
 ##' @author guangchuang yu
 plot_bioc_stats <- function(pkg=YGC_bioc_pkg) {
     nb <- bioc_stats(pkg)
+    if (is.null(nb)) {
+        warning(paste("--> OMITTED:", pkg, "download stats not found or currently not available..."))
+        return(NULL)
+    }
+
     nb <- nb[-grep(max(nb$start), nb$start),]
 
-    x=read.delim("https://bioconductor.org/packages/stats/bioc/bioc_pkg_scores.tab")
+    x <- read.delim("https://bioconductor.org/packages/stats/bioc/bioc_pkg_scores.tab")
     x[order(x[,2], decreasing=T),] -> x
     n <- toupper(x[,1]) %>% unique %>% length
 
     rank = rep(NA, length(pkg))
     for (i in seq_along(pkg)) {
-	j <- which(x[,1] == pkg[i])
-	rank[i] = j # paste0("rank: ", j, '/', n)
+        j <- which(x[,1] == pkg[i])
+        rank[i] = j # paste0("rank: ", j, '/', n)
     }
 
-    cols <- brewer.pal(length(pkg), 'Dark2')
+    cols <- brewer.pal(length(pkg), 'Set1')
 
     p <- plot_dlstats_internal(nb, "Nb_of_distinct_IPs")
 
@@ -70,6 +80,10 @@ plot_dlstats_internal <- function(nb, y) {
 ##' @author guangchuang yu
 plot_cran_stats <- function(pkg=YGC_cran_pkg) {
     nb <- cran_stats(pkg)
+    if (is.null(nb)) {
+        warning(paste("--> OMITTED:", pkg, "download stats not found or currently not available..."))
+        return(NULL)
+    }
     p <- plot_dlstats_internal(nb, "downloads")
     p + labs(captions=paste0("access date: ", format(Sys.time(), "%b %Y")),
              title="Monthly download stats") +

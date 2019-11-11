@@ -21,15 +21,16 @@ pkgs <- c("ChIPseeker", "clusterProfiler", "DOSE", "ggtree", "GOSemSim", "Reacto
 y <- bioc_stats(pkgs)
 head(y)
 
-ggplot(y, aes(end, Nb_of_downloads, group=package, color=package)) +
-    geom_line() + geom_point(aes(shape=package))
+if (!is.null(y)) {
+   ggplot(y, aes(end, Nb_of_downloads, group=package, color=package)) +
+       geom_line() + geom_point(aes(shape=package))
 
-## ----fig.width=10--------------------------------------------------------
-library("tidyr")
-yy <- gather(y, type, Nb, Nb_of_distinct_IPs:Nb_of_downloads)
+   library("tidyr")
+   yy <- gather(y, type, Nb, Nb_of_distinct_IPs:Nb_of_downloads)
 
-ggplot(yy, aes(end, Nb, shape=package, color=package)) +geom_point() + geom_line() +
-    ylab(NULL) + xlab(NULL) + facet_grid(type~., scales="free_y") +
-    ggtitle("Number of downloads per Month") +
-    scale_x_date(date_breaks="1 year", date_labels = "%Y")
+   ggplot(yy, aes(end, Nb, shape=package, color=package)) +geom_point() + geom_line() +
+       ylab(NULL) + xlab(NULL) + facet_grid(type~., scales="free_y") +
+       ggtitle("Number of downloads per Month") +
+       scale_x_date(date_breaks="1 year", date_labels = "%Y")
+}
 
