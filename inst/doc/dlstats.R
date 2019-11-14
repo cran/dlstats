@@ -12,16 +12,19 @@ library("ggplot2")
 library("dlstats")
 
 x <- cran_stats(c("emojifont", "ggimage", "hexSticker", "rvcheck"))
-head(x)
-ggplot(x, aes(end, downloads, group=package, color=package)) +
-    geom_line() + geom_point(aes(shape=package))
+
+if (!is.null(x)) {
+   head(x)
+   ggplot(x, aes(end, downloads, group=package, color=package)) +
+       geom_line() + geom_point(aes(shape=package))
+}
 
 ## ----fig.width=10--------------------------------------------------------
 pkgs <- c("ChIPseeker", "clusterProfiler", "DOSE", "ggtree", "GOSemSim", "ReactomePA")
 y <- bioc_stats(pkgs)
-head(y)
 
 if (!is.null(y)) {
+   head(y)
    ggplot(y, aes(end, Nb_of_downloads, group=package, color=package)) +
        geom_line() + geom_point(aes(shape=package))
 
