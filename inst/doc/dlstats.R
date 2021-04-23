@@ -1,13 +1,13 @@
-## ----style, echo=FALSE, results="asis", message=FALSE--------------------
+## ----style, echo=FALSE, results="asis", message=FALSE-------------------------
 knitr::opts_chunk$set(tidy = FALSE,
 		   message = FALSE)
 
-## ----echo=FALSE, results="hide", message=FALSE---------------------------
+## ----echo=FALSE, results="hide", message=FALSE--------------------------------
 library("tidyr")
 library("ggplot2")
 library("dlstats")
 
-## ----fig.width=10--------------------------------------------------------
+## ----fig.width=10-------------------------------------------------------------
 library("ggplot2")
 library("dlstats")
 
@@ -19,7 +19,7 @@ if (!is.null(x)) {
        geom_line() + geom_point(aes(shape=package))
 }
 
-## ----fig.width=10--------------------------------------------------------
+## ----fig.width=10-------------------------------------------------------------
 pkgs <- c("ChIPseeker", "clusterProfiler", "DOSE", "ggtree", "GOSemSim", "ReactomePA")
 y <- bioc_stats(pkgs)
 
